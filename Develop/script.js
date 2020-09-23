@@ -19,9 +19,9 @@ function generatePassword() {
   var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
     "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
   // list of all numbers 0-9
-  var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+  var numbersArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
   // list of all special characters NOT counting space (" ") as most passwords disallow it
-  var specials = ["!", "\"", "#", "$", "%", "&", "\'", "(", ")", "*", "+", ",",
+  var specialsArray = ["!", "\"", "#", "$", "%", "&", "\'", "(", ")", "*", "+", ",",
     "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_",
     "`", "{", "|", "}", "~"]
 
@@ -60,7 +60,7 @@ function generatePassword() {
       alert("Please enter only a numerical value between 8 and 128.")
     }
   } while (!isValid);
-  console.log("Pass Length: " + length);
+  // console.log("Pass Length: " + length);
   //#endregion
 
   //#region charSelection
@@ -84,28 +84,28 @@ function generatePassword() {
       isValid = true;
 
   } while (!isValid);
-  console.log("Lower: " + lowerAlpha);
-  console.log("Upper: " + upperAlpha);
-  console.log("Numbers: " + numerical);
-  console.log("Special: " + special);
+  // console.log("Lower: " + lowerAlpha);
+  // console.log("Upper: " + upperAlpha);
+  // console.log("Numbers: " + numerical);
+  // console.log("Special: " + special);
   //#endregion
 
   // if user selects both lower and upper case, add alpha array twice (once with .toLowerCase() and with .toUpperCase())
   if (lowerAlpha == true)
-    for (var i = 0; i < alphabet.length; i++) {
-      passArray.push(alphabet[i].toLowerCase());
+    for(var i of alphabet){
+      passArray.push(i.toLowerCase());
     }
   if (upperAlpha == true)
-    for (var i = 0; i < alphabet.length; i++) {
-      passArray.push(alphabet[i].toUpperCase());
+    for(var i of alphabet){
+      passArray.push(i.toUpperCase());
     }
   if (numerical == true)
-    for (var i = 0; i < numerical.length; i++) {
-      passArray.push(numerical[i]);
+    for(var i of numbersArray){
+      passArray.push(i);
     }
   if (special == true)
-    for (var i = 0; i < special.length; i++) {
-      passArray.push(special[i]);
+    for(var i of specialsArray){
+      passArray.push(i);
     }
 
 console.log(passArray);
@@ -113,7 +113,7 @@ console.log(passArray);
   for (var i = 0; i < length; i++) {
     pass += passArray[Math.floor(Math.random() * passArray.length + 1)];
   }
-  console.log(pass);
+  // console.log(pass);
   // return concatenated string after password generation
   return pass;
 
