@@ -16,8 +16,8 @@ The purpose of this program is to randomly generate a password that follows the 
 ## Language used:
 Primarily JavaScript for the functionality, main page is HTML with a CSS for the styling
 
-### Example image:
-![Example Image](assets/exampleImage.png)
-
 #### Live website link:
 https://grimmedev.github.io/FSB-PasswordGenerator/
+
+#### Example image:
+![Example Image](Assets\exampleImage.png)
