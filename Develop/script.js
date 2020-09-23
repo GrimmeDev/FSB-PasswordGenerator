@@ -7,23 +7,22 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
 // password generation
 function generatePassword() {
-  //#region VariableDeclarations
 
-  // use array for alphabet, randomNum generator for syncing
+  //#region VariableDeclarations
+  // use array for alphabet
   // will be using .toLowerCase() and .toUpperCase() based on user choice
   var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
     "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
   // list of all numbers 0-9
   var numbersArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
   // list of all special characters NOT counting space (" ") as most passwords disallow it
-  var specialsArray = ["!", "\"", "#", "$", "%", "&", "\'", "(", ")", "*", "+", ",",
+  var specialsArray = ["!", "\"", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",",
     "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_",
-    "`", "{", "|", "}", "~"]
+    "`", "{", "|", "}", "~"];
 
   // singular array containing concatenated arrays for alphabet, numerical, and special characters
   var passArray = []; // declared but unitizialized array which will contain all array elements from user choices
@@ -31,10 +30,9 @@ function generatePassword() {
   // empty var to contain the full password after generation
   var pass = "";
 
-  var numericalCheck = /^[0-9]+$/; //Regular expression containing only numbers
-  var isValid = false; //used to break out of the do/while loop if all conditions are true
+  var isValid = false; // used to break out of the do/while loop if all conditions are true
 
-  //boolean variables declared but left uninitialized for now
+  // boolean variables declared but left uninitialized for now
   var lowerAlpha, upperAlpha, numerical, special;
   //#endregion
 
@@ -49,10 +47,12 @@ function generatePassword() {
 
     // try/catch is used to catch exceptions in case the user inputs a wrong character
     try {
-      if ((length < 8) || (length > 128))
+
+      // confirms user choice is >= 8 or <= 128, and also checks if they entered a non-number
+      if ((length < 8) || (length > 128) || (isNaN(length)))
         alert("Please pick a number between 8 and 128.");
       else {
-        //assumes all values match correct numbers
+        // assumes all values match correct numbers
         alert("You have picked a length of " + length + " characters for your password.");
         isValid = true;
       }
@@ -90,34 +90,36 @@ function generatePassword() {
   // console.log("Special: " + special);
   //#endregion
 
+  //#region passArraySet
   // if user selects both lower and upper case, add alpha array twice (once with .toLowerCase() and with .toUpperCase())
   if (lowerAlpha == true)
-    for(var i of alphabet){
+    for (var i of alphabet) {
       passArray.push(i.toLowerCase());
     }
   if (upperAlpha == true)
-    for(var i of alphabet){
+    for (var i of alphabet) {
       passArray.push(i.toUpperCase());
     }
   if (numerical == true)
-    for(var i of numbersArray){
+    for (var i of numbersArray) {
       passArray.push(i);
     }
   if (special == true)
-    for(var i of specialsArray){
+    for (var i of specialsArray) {
       passArray.push(i);
     }
 
-console.log(passArray);
-  // generate random number equal to length of passArray + 1
+  console.log(passArray);
+  //#endregion
+
+
+  // generate random number equal to length of passArray
   for (var i = 0; i < length; i++) {
-    pass += passArray[Math.floor(Math.random() * passArray.length + 1)];
+    pass += passArray[Math.floor(Math.random() * passArray.length)];
   }
   // console.log(pass);
   // return concatenated string after password generation
   return pass;
-
-
 }
 
 
