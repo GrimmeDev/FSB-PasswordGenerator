@@ -20,4 +20,4 @@ Primarily JavaScript for the functionality, main page is HTML with a CSS for the
 https://grimmedev.github.io/FSB-PasswordGenerator/
 
 #### Example image:
-![Example Image](Assets\exampleImage.png)
+![Example Image](Assets/exampleImage.png)
